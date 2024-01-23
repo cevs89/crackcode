@@ -1,0 +1,27 @@
+FROM python:3.10
+
+WORKDIR /code
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+ENV DJANGO_SETTINGS_MODULE project.settings
+
+
+# Update package lists
+RUN apt-get update
+
+RUN apt-get install -y gettext libpq-dev build-essential bash
+
+# Clean up
+RUN apt-get autoremove && apt-get clean
+
+COPY ./requirements/base.txt /code/requirements.txt
+
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+COPY ./apps /code/app
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0", "8000"]

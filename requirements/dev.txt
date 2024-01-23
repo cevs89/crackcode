@@ -1,0 +1,2 @@
+-r linters.txt
+pre-commit==3.0.0
