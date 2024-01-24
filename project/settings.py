@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
 PROJECT_APPS = ["apps.core", "apps.accounts"]
 
-THIRDS_APPS = []
+THIRDS_APPS = ["rest_framework", "rest_framework.authtoken", "drf_yasg"]
 
 INSTALLED_APPS += PROJECT_APPS + THIRDS_APPS
 
