@@ -5,7 +5,7 @@ Descriptions
 `>3.10`
 
 ## Docker | Run server
-> You has to have installed  `docker` and `docker-compose`
+> You had to have installed  `docker` and `docker-compose`
 >
 > Docker: https://docs.docker.com/engine/install/ubuntu/
 >
@@ -15,12 +15,15 @@ Descriptions
 
 If you need to deploy through Docker I did development a script in bash for make this easier
 
-`./crack_code.sh runserver`
+### Start Project
+
+```
+./crack_code.sh runserver
+```
 
 > This command has works with permission to execute.  If this command does not work, please execute: `chmod +x crack_code.sh`
 
-This command `build`, `migrations`, `load` and will run the `server`, if you want to development
-in docker environment
+This command `build`, `migrations`, `load` and will run the `server`, if you want to development in docker environment
 
 
 **Comment:**
