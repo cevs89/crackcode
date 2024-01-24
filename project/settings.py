@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = ["apps.core", "apps.accounts"]
+PROJECT_APPS = ["apps.core", "apps.accounts", "apps.career"]
 
 THIRDS_APPS = ["rest_framework", "rest_framework.authtoken", "drf_yasg"]
 
