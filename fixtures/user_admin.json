@@ -1,0 +1,19 @@
+[
+{
+  "model": "apps_accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$LdSQB7tp6AAMSxnYHxchhe$mk3GDk/75ZM0ON8tZyhCCHgmsTduY94qMlo3j0KRiSg=",
+    "last_login": "2024-01-24T19:47:31.458Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-01-24T17:42:16.154Z",
+    "email": "crackthecode@example.com",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

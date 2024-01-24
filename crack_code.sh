@@ -10,6 +10,7 @@ case $1 in
     echo "crack_code.sh commands:"
     echo "  runserver: run the development stack"
     echo "  migrate: run migrate to DB"
+    echo "  load_data: load data"
     echo "  run: Just run de server"
     echo "  manage.py: run a manage.py command"
     ;;
@@ -20,6 +21,8 @@ case $1 in
     trap cleanup EXIT
     $COMPOSE up -d --build --remove-orphans
     $COMPOSE exec web python manage.py migrate
+    $COMPOSE exec web python manage.py loaddata fixtures/user_admin.json
+    $COMPOSE exec web python manage.py loaddata fixtures/group_users.json
     $COMPOSE logs -f web
     ;;
     migrate)
@@ -29,6 +32,11 @@ case $1 in
     exec  )
     shift
     $COMPOSE exec web bash
+    ;;
+    loaduser)
+    shift
+    $COMPOSE exec web python manage.py loaddata fixtures/user_admin.json
+    $COMPOSE exec web python manage.py loaddata fixtures/group_users.json
     ;;
     run)
     function cleanup {

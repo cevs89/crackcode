@@ -19,7 +19,7 @@ If you need to deploy through Docker I did development a script in bash for make
 
 > This command has works with permission to execute.  If this command does not work, please execute: `chmod +x crack_code.sh`
 
-This command `build`, `migrate` and will run the `server`, if you want to development
+This command `build`, `migrations`, `load` and will run the `server`, if you want to development
 in docker environment
 
 
@@ -34,6 +34,7 @@ crack_code.sh commands:
   runserver: run the development stack"
   migrate: run migrate to DB"
   run: Just run de server"
+  load_data: load data
   exec: run a command inside a running container
   manage.py: run a manage.py command"
 ```
@@ -55,7 +56,27 @@ crack_code.sh commands:
 `pip install -r requirements/base.txt`
 
 
+**5- load User Admin and Group Users**
+
+`python manage.py loaddata fixtures/user_admin.json`
+
+
+`python manage.py loaddata fixtures/group_users.json`
 ___
+
+
+## User Admin Default
+
+You have to use the following credentials
+
+| user                      | password        |
+|---------------------------|-----------------|
+| crackthecode@example.com  | crackthecode123 |
+
+___
+
+## Install this if you need to development
+> Before you has to install Virtual Enviroment
 
 ### 1- How to set up dev tools
 * install dev requirements  `pip install -r requirements/dev.txt`
