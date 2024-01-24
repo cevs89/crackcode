@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -11,7 +12,7 @@ class UserProfile(BaseModel):
         Field Required:
             user: OneToOneField | Unique | Required
             document_type: str max_length 10, Choices | None
-            user_type: str max_length 5, Choices | None
+            user_type: str max_length 10, Choices | None
             document_number: int | None
             country: ForeignKey | None
         Examples:
@@ -51,11 +52,12 @@ class UserProfile(BaseModel):
         default="DNI",
     )
     user_type = models.CharField(
-        max_length=5,
+        max_length=10,
         choices=(
             ("MADRE", _("Madre")),
             ("PADRE", _("Padre")),
             ("TUTOR", _("Tutor")),
+            ("PROFESOR", _("Profesor")),
         ),
         default="MADRE",
     )
@@ -79,6 +81,20 @@ class UserProfile(BaseModel):
                 name="unique_constraint_user_profile_document_type_document_number_and_country_has_unique",
             )
         ]
+
+    def _validate_users(self):
+        if not self.user.groups.filter(name__in=["teacher", "guardian"]).exists():
+            raise ValidationError(
+                {
+                    "teacher": _(
+                        "El usuario debe ser un Profesor o un representante/guardian"
+                    )
+                }
+            )
+
+    def save(self, *args, **kwargs):
+        self._validate_users()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.user}"

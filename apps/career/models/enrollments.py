@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.db import models
+from django.db import IntegrityError, models
 from django.utils.translation import gettext_lazy as _
 
 from apps.core.models import BaseModel
@@ -78,7 +78,32 @@ class Enrollments(BaseModel):
 
     def save(self, *args, **kwargs):
         self._validate_user_student()
-        super().save(*args, **kwargs)
+
+        try:
+            self.course = self.salon.group_study.course
+            self.group_study = self.salon.group_study
+            super().save(*args, **kwargs)
+        except IntegrityError as e:
+            if "unique_constraint_enrollments_student_course_has_unique" in str(e):
+                raise ValidationError(
+                    {"course": _("El estudiante ya está inscrito en este curso.")}
+                )
+            elif "unique_constraint_enrollments_student_group_study_has_unique" in str(
+                e
+            ):
+                raise ValidationError(
+                    {
+                        "group_study": _(
+                            "El estudiante ya está inscrito en este grupo de estudio."
+                        )
+                    }
+                )
+            elif "unique_constraint_enrollments_student_salon_has_unique" in str(e):
+                raise ValidationError(
+                    {"salon": _("El estudiante ya está inscrito en este salón.")}
+                )
+            else:
+                raise ValidationError({"ErroGeneral": str(e)})
 
     def __str__(self):
-        return f"{self.student}"
+        return f"Student: {self.student}, Grupo: {self.group_study.name}, Salon: {self.salon.name}, Course {self.course.name}"
