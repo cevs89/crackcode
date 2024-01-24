@@ -62,7 +62,7 @@ class UserProfile(BaseModel):
 
     document_number = models.IntegerField(null=True, blank=True)
     country = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        "apps_core.Countries",
         on_delete=models.CASCADE,
         related_name="country_user_profile_related",
         null=True,
@@ -76,7 +76,7 @@ class UserProfile(BaseModel):
         constraints = [
             models.UniqueConstraint(
                 fields=["document_type", "document_number", "country"],
-                name="unique_constraint_document_type_document_number_and_country_has_unique",
+                name="unique_constraint_user_profile_document_type_document_number_and_country_has_unique",
             )
         ]
 

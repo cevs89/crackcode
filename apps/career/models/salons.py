@@ -45,7 +45,7 @@ class Salons(BaseModel):
         verbose_name_plural = _("Salons")
 
     def _validate_user(self):
-        if not self.teacher.groups.filter(name="teacher").exists():
+        if not self.teacher.groups.filter(name__exact="teacher").exists():
             raise ValidationError({"teacher": _("El usuario debe ser un profesor")})
 
     def save(self, *args, **kwargs):

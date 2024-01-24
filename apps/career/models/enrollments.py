@@ -73,7 +73,7 @@ class Enrollments(BaseModel):
         ]
 
     def _validate_user_student(self):
-        if not self.student.groups.filter(name="teacher").exists():
+        if not self.student.groups.filter(name__exact="student").exists():
             raise ValidationError({"teacher": _("El usuario debe ser un estudiante")})
 
     def save(self, *args, **kwargs):

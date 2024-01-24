@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -36,6 +37,21 @@ class StudentsUserProfile(BaseModel):
     class Meta:
         verbose_name = _("Perfil del Estudiante")
         verbose_name_plural = _("Perfil de Estudiante")
+
+    def _validate_user_student(self):
+        if not self.user.groups.filter(name__exact="student").exists():
+            raise ValidationError({"teacher": _("El usuario debe ser un estudiante")})
+
+    def _validate_user_guardian(self):
+        if not self.guardian.groups.filter(name__exact="guardian").exists():
+            raise ValidationError(
+                {"teacher": _("El usuario debe ser un representante/guardian")}
+            )
+
+    def save(self, *args, **kwargs):
+        self._validate_user_student()
+        self._validate_user_guardian()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.user}"
