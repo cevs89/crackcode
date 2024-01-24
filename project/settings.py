@@ -38,9 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = [
-    "apps.core",
-]
+PROJECT_APPS = ["apps.core", "apps.accounts"]
 
 THIRDS_APPS = []
 
@@ -140,3 +138,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Users Custom | AbstractUser
+
+AUTH_USER_MODEL = "apps_accounts.User"
