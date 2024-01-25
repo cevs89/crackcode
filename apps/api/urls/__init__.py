@@ -7,7 +7,11 @@ urlpatterns = [
         include("apps.api.urls.obtain_token"),
     ),
     path(
-        "",
+        "users/",
         include("apps.api.urls.users"),
+    ),
+    path(
+        "masive/",
+        include("apps.api.urls.upload_file"),
     ),
 ]
