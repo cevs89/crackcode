@@ -30,6 +30,10 @@ class UsersService(BaseService):
 
         return _update_models
 
+    @staticmethod
+    def _normalize_email(email: str) -> str:
+        return str(email.lower().strip().replace(" ", ""))
+
     def save(self, get_model: User, **data: dict) -> Model:
         ValidateExistsUser(str(data["email"])).execute()
 
@@ -38,7 +42,7 @@ class UsersService(BaseService):
                 _save_models = get_model()
                 _save_models.first_name = data["first_name"]
                 _save_models.last_name = data["last_name"]
-                _save_models.email = data["email"]
+                _save_models.email = self._normalize_email(str(data["email"]))
                 _save_models.set_password("123456")
                 _save_models.is_staff = False
                 _save_models.is_active = True
