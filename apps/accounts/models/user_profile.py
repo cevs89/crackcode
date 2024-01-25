@@ -36,6 +36,19 @@ class UserProfile(BaseModel):
             modified_at
     """
 
+    DOCUMENT_TYPE_CHOICES = (
+        ("CEDULA", "Cédula"),
+        ("DNI", "DNI"),
+        ("PASAPORTE", "Pasaporte"),
+        ("OTRO", "Otro"),
+    )
+    USER_TYPE_CHOICES = (
+        ("MADRE", _("Madre")),
+        ("PADRE", _("Padre")),
+        ("TUTOR", _("Tutor")),
+        ("PROFESOR", _("Profesor")),
+    )
+
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -43,22 +56,12 @@ class UserProfile(BaseModel):
     )
     document_type = models.CharField(
         max_length=10,
-        choices=(
-            ("CEDULA", _("Cédula")),
-            ("DNI", _("DNI")),
-            ("PASAPORTE", _("Pasaporte")),
-            ("OTRO", _("Otro")),
-        ),
+        choices=DOCUMENT_TYPE_CHOICES,
         default="DNI",
     )
     user_type = models.CharField(
         max_length=10,
-        choices=(
-            ("MADRE", _("Madre")),
-            ("PADRE", _("Padre")),
-            ("TUTOR", _("Tutor")),
-            ("PROFESOR", _("Profesor")),
-        ),
+        choices=USER_TYPE_CHOICES,
         default="MADRE",
     )
 
