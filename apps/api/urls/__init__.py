@@ -18,4 +18,8 @@ urlpatterns = [
         "",
         include("apps.api.urls.group_study"),
     ),
+    path(
+        "",
+        include("apps.api.urls.salons"),
+    ),
 ]
