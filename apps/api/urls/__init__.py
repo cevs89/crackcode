@@ -14,4 +14,8 @@ urlpatterns = [
         "masive/",
         include("apps.api.urls.upload_file"),
     ),
+    path(
+        "",
+        include("apps.api.urls.group_study"),
+    ),
 ]
