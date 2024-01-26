@@ -66,6 +66,7 @@ class ValidateUploadFile:
                 "guardian_document",  # Optional
                 "guardian_document_type",  # Optional
                 "guardian_type",  # Optional
+                "guardian_country",
                 "salon_id",
             ]
 
