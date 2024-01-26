@@ -23,6 +23,7 @@ case $1 in
     $COMPOSE exec web python manage.py migrate
     $COMPOSE exec web python manage.py loaddata fixtures/user_admin.json
     $COMPOSE exec web python manage.py loaddata fixtures/group_users.json
+    $COMPOSE exec web python manage.py loaddata fixtures/countries_data.json
     $COMPOSE logs -f web
     ;;
     migrate)
@@ -35,8 +36,11 @@ case $1 in
     ;;
     loaduser)
     shift
+    $COMPOSE exec web python manage.py migrate
+
     $COMPOSE exec web python manage.py loaddata fixtures/user_admin.json
     $COMPOSE exec web python manage.py loaddata fixtures/group_users.json
+    $COMPOSE exec web python manage.py loaddata fixtures/countries_data.json
     ;;
     run)
     function cleanup {
