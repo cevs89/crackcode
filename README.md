@@ -1,6 +1,17 @@
 # Crack the code
+> ESPAÑOL
 
-Descriptions
+**AL FINAL DE ESTE DOCUMENTO DEJE NOTAS IMPORTANTES**
+
+Puede encontrar todo lo que necesita para iniciar el proyecto en este pequeño README. También encontrara un colección de POSTMAN para que se pueda probar los endpoint.
+
+```
+Colección: docs/CrackTheCodeDocs.postman_collection.json
+```
+Endpoints Disponibles:
+
+![Gato](docs/img/endpoints.png)
+
 ## Python Version
 `>3.10`
 
@@ -110,3 +121,11 @@ black....................................................................Passed
 flake8...................................................................Passed
 isort....................................................................Passed
 ```
+
+## NOTAS
+
+El proyecto tiene comentarios en todo el código, hay cosas que se hicieron de esa manera por temas de tiempo, pero seguramente se pueden mejorar. Como cargar el archivo es una de ellas, una carga masiva pueden ser miles de registros, tengo experiencia subiendo archivo de 1 millón de lineas, esto es mi portante que se maneje con tareas en según plano, se pueden aplicar muchas tecnologías, lambdas con SQS o SNS, Event Drive (RabbitMQ, Kafka), Celery o cualquier otro que se necesite.
+
+Otra de las cosas que no me gusto mucho fue la autentificación de los endpoint son sencillos, creo que se debe trabajar mas en eso.
+
+El proyecto se empaqueto todos sus módulos, se aplico SOLID y abstracción.
