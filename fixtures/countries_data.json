@@ -1,0 +1,38 @@
+[
+{
+  "model": "apps_core.countries",
+  "pk": 1,
+  "fields": {
+    "uuid": "977d9876-b2c4-460c-bdf8-a098a5fb055c",
+    "is_active": true,
+    "created_at": "2024-01-24T19:49:21.517Z",
+    "modified_at": "2024-01-24T19:49:21.517Z",
+    "name": "Venezuela",
+    "code": "VE"
+  }
+},
+{
+  "model": "apps_core.countries",
+  "pk": 2,
+  "fields": {
+    "uuid": "c61010a1-66d0-41c2-ae18-33d780f9e7f8",
+    "is_active": true,
+    "created_at": "2024-01-24T19:49:30.418Z",
+    "modified_at": "2024-01-24T19:49:30.418Z",
+    "name": "Colombia",
+    "code": "CO"
+  }
+},
+{
+  "model": "apps_core.countries",
+  "pk": 3,
+  "fields": {
+    "uuid": "bb13bf0a-8974-474d-b332-7120a337c47a",
+    "is_active": true,
+    "created_at": "2024-01-26T00:16:00.622Z",
+    "modified_at": "2024-01-26T00:16:00.622Z",
+    "name": "Argentina",
+    "code": "AR"
+  }
+}
+]
