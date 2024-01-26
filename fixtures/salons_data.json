@@ -1,0 +1,41 @@
+[
+{
+  "model": "apps_career.salons",
+  "pk": 1,
+  "fields": {
+    "uuid": "1b39a8bc-6eff-4cbc-8fc5-6a50411bc363",
+    "is_active": true,
+    "created_at": "2024-01-26T00:32:47.815Z",
+    "modified_at": "2024-01-26T00:32:47.815Z",
+    "name": "Salon 1",
+    "group_study": 1,
+    "teacher": 2
+  }
+},
+{
+  "model": "apps_career.salons",
+  "pk": 2,
+  "fields": {
+    "uuid": "d4cb0980-ab91-43e2-9401-6d209647bff8",
+    "is_active": true,
+    "created_at": "2024-01-26T00:33:02.007Z",
+    "modified_at": "2024-01-26T00:33:02.007Z",
+    "name": "Salon 2",
+    "group_study": 2,
+    "teacher": 2
+  }
+},
+{
+  "model": "apps_career.salons",
+  "pk": 3,
+  "fields": {
+    "uuid": "d8e626be-f96b-4a4d-a379-72b164724805",
+    "is_active": true,
+    "created_at": "2024-01-26T00:33:52.577Z",
+    "modified_at": "2024-01-26T00:33:52.577Z",
+    "name": "Salon 1",
+    "group_study": 3,
+    "teacher": 2
+  }
+}
+]

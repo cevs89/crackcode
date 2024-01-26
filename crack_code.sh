@@ -21,9 +21,14 @@ case $1 in
     trap cleanup EXIT
     $COMPOSE up -d --build --remove-orphans
     $COMPOSE exec web python manage.py migrate
-    $COMPOSE exec web python manage.py loaddata fixtures/user_admin.json
+
     $COMPOSE exec web python manage.py loaddata fixtures/group_users.json
+    $COMPOSE exec web python manage.py loaddata fixtures/user_admin.json
+    $COMPOSE exec web python manage.py loaddata fixtures/teacher_data.json
     $COMPOSE exec web python manage.py loaddata fixtures/countries_data.json
+    $COMPOSE exec web python manage.py loaddata fixtures/courses_data.json
+    $COMPOSE exec web python manage.py loaddata fixtures/groups_data.json
+    $COMPOSE exec web python manage.py loaddata fixtures/salons_data.json
     $COMPOSE logs -f web
     ;;
     migrate)
@@ -38,9 +43,13 @@ case $1 in
     shift
     $COMPOSE exec web python manage.py migrate
 
-    $COMPOSE exec web python manage.py loaddata fixtures/user_admin.json
     $COMPOSE exec web python manage.py loaddata fixtures/group_users.json
+    $COMPOSE exec web python manage.py loaddata fixtures/user_admin.json
+    $COMPOSE exec web python manage.py loaddata fixtures/teacher_data.json
     $COMPOSE exec web python manage.py loaddata fixtures/countries_data.json
+    $COMPOSE exec web python manage.py loaddata fixtures/courses_data.json
+    $COMPOSE exec web python manage.py loaddata fixtures/groups_data.json
+    $COMPOSE exec web python manage.py loaddata fixtures/salons_data.json
     ;;
     run)
     function cleanup {

@@ -3,7 +3,6 @@ from cerberus import Validator
 from apps.accounts.models import UserProfile
 from apps.api.helpers import SCHEMA
 from apps.core.helpers import CustomErrorHandler
-from apps.core.models import Countries
 
 
 class UpdateValidationUsers:
@@ -26,7 +25,7 @@ class UpdateValidationUsers:
             "required": False,
             "maxlength": 2,
             "empty": False,
-            "allowed": list(Countries.objects.values_list("code", flat=True)),
+            "allowed": ["VE", "CO", "AR"],
         },
     }
 

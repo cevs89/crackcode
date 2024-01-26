@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$720000$LdSQB7tp6AAMSxnYHxchhe$mk3GDk/75ZM0ON8tZyhCCHgmsTduY94qMlo3j0KRiSg=",
-    "last_login": "2024-01-24T19:47:31.458Z",
+    "last_login": "2024-01-26T00:28:24.252Z",
     "is_superuser": true,
     "first_name": "",
     "last_name": "",
@@ -13,6 +13,25 @@
     "date_joined": "2024-01-24T17:42:16.154Z",
     "email": "crackthecode@example.com",
     "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "apps_accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$6mbt2LffzYCtFqe9eUskyH$+nF7EvZ/QusWbP6ikxuiwUnFsmjMbFO2nrhaBueWTpg=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Obi-Wan",
+    "last_name": "Kenobi",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-01-26T00:29:33.419Z",
+    "email": "kenobi@startwars.com",
+    "groups": [
+      2
+    ],
     "user_permissions": []
   }
 }
