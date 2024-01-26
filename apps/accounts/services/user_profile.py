@@ -17,7 +17,7 @@ class UserProfileService:
 
     def _validate_country(self) -> Countries:
         try:
-            query_country = Countries.objects.get(code=self.data["country"])
+            query_country = Countries.objects.get(code__exact=self.data["country"])
         except Countries.DoesNotExist:
             raise ValueError(
                 _("El pais no existe, porfavor verifique e intente de nuevo")
@@ -72,16 +72,17 @@ class UserProfileService:
         return _query_students
 
     def _update_student_profile(self, student_profile: StudentsUserProfile) -> None:
-        _guardian = ValidateExistsUser(email=self.data["guardian"]).get_queryset
-        if _guardian is None:
-            raise ValueError(f"El guardian {self.data['guardian']} no existe")
+        if "guardian" in self.data:
+            _guardian = ValidateExistsUser(email=self.data["guardian"]).get_queryset
+            if _guardian is None:
+                raise ValueError(f"El guardian {self.data['guardian']} no existe")
 
-        try:
-            with transaction.atomic():
-                student_profile.guardian = _guardian
-                student_profile.save()
-        except (Exception, IntegrityError) as e:
-            raise ValueError(str(e))
+            try:
+                with transaction.atomic():
+                    student_profile.guardian = _guardian
+                    student_profile.save()
+            except (Exception, IntegrityError) as e:
+                raise ValueError(str(e))
 
     def _save_user_general_profile(self) -> UserProfile:
         try:

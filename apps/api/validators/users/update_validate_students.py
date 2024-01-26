@@ -8,7 +8,7 @@ class UpdateValidationStudents:
     _array = {
         "guardian": {
             "type": "string",
-            "required": True,
+            "required": False,
             "maxlength": 100,
             "regex": r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b",
         }

@@ -57,7 +57,7 @@ class UsersService(BaseService):
         return _save_models
 
     def delete(self, get_model: Model, id_obj: id) -> str:
-        self._get_queryset(get_model, id_obj)
+        self._get_queryset(get_model, {"pk": id_obj})
 
         try:
             self.queryset.delete()

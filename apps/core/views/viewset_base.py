@@ -39,7 +39,8 @@ class BaseViewSet(viewsets.ModelViewSet):
     def retrieve(self, request, pk=None, **kwargs):
         """Method GET with Params"""
         try:
-            queryset = self.service.details(self.queryset, pk)
+            self._filters["pk"] = pk
+            queryset = self.service.details(self.queryset, self._filters)
         except Exception as e:
             return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
